@@ -1,3 +1,4 @@
+/*
 var test = {
     name: 'test1',
     yearofBirth: '1990',
@@ -45,3 +46,5 @@ var test5 = Object.create(personProto,
     yearOfBirth: {value: 1950},
     job: {value: 'worker'}
 });
+*/
+

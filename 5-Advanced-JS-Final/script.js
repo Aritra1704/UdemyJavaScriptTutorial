@@ -141,35 +141,35 @@ console.log(rates);
 
 /////////////////////////////
 // Lecture: Functions returning functions
-/*
-function interviewQuestion(job) {
-    if (job === 'designer') {
-        return function(name) {
-            console.log(name + ', can you please explain what UX design is?');
-        }
-    } else if (job === 'teacher') {
-        return function(name) {
-            console.log('What subject do you teach, ' + name + '?');
-        }
-    } else {
-        return function(name) {
-            console.log('Hello ' + name + ', what do you do?');
-        }
-    }
-}
 
-var teacherQuestion = interviewQuestion('teacher');
-var designerQuestion = interviewQuestion('designer');
+// function interviewQuestion(job) {
+//     if (job === 'designer') {
+//         return function(name) {
+//             console.log(name + ', can you please explain what UX design is?');
+//         }
+//     } else if (job === 'teacher') {
+//         return function(name) {
+//             console.log('What subject do you teach, ' + name + '?');
+//         }
+//     } else {
+//         return function(name) {
+//             console.log('Hello ' + name + ', what do you do?');
+//         }
+//     }
+// }
+
+// var teacherQuestion = interviewQuestion('teacher');
+// var designerQuestion = interviewQuestion('designer');
 
 
-teacherQuestion('John');
-designerQuestion('John');
-designerQuestion('jane');
-designerQuestion('Mark');
-designerQuestion('Mike');
+// teacherQuestion('John');
+// designerQuestion('John');
+// designerQuestion('jane');
+// designerQuestion('Mark');
+// designerQuestion('Mike');
 
-interviewQuestion('teacher')('Mark');
-*/
+// interviewQuestion('teacher')('Mark');
+
 
 
 
@@ -240,7 +240,7 @@ interviewQuestion('teacher')('John');
 
 /////////////////////////////
 // Lecture: Bind, call and apply
-/*
+
 var john = {
     name: 'John',
     age: 26,
@@ -298,7 +298,7 @@ var ages = arrayCalc(years, calculateAge);
 var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20));
 console.log(ages);
 console.log(fullJapan);
-*/
+
 
 
 
@@ -329,7 +329,7 @@ c) correct answer (I would use a number for this)
 */
 
 
-/*
+
 (function() {
     function Question(question, answers, correct) {
         this.question = question;
@@ -376,7 +376,7 @@ c) correct answer (I would use a number for this)
 
     questions[n].checkAnswer(answer);
 })();
-*/
+
 
 
 
