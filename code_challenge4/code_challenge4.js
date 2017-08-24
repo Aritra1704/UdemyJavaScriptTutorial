@@ -84,12 +84,21 @@ c) correct answer (I would use a number for this)
         }
     }
 
-    Question.prototype.checkAnswers = function(ans) {
+    Question.prototype.checkAnswers = function(ans, callback) {
+        var score;
         if(ans === this.correct) {
             console.log('Correct answer.');
+            score = callback(true);
         } else {
             console.log('Incorrect answer.');
+            score = callback(false);
         }
+        this.displayScore(score);
+    }
+
+    Question.prototype.displayScore = function(totalscore) {
+        console.log('Your score is: ' + totalscore);
+        console.log('----------------------------');
     }
 
     var ques1 = new Question('Which language is best?', ['Java', 'JavaScript', 'C'], 1);
@@ -98,7 +107,16 @@ c) correct answer (I would use a number for this)
 
     var questionset = [ques1, ques2, ques3];
 
-    
+    function score() {
+        var totalscore = 0;
+        return function(correct) {
+            if(correct)
+                totalscore++;
+            return totalscore;
+        }
+    }
+
+    var trackScore = score();
 
     nextQuestion();
 
@@ -109,7 +127,7 @@ c) correct answer (I would use a number for this)
 
         var answer = prompt('Please select the correct answer: ');
         if(answer !== 'exit') {
-            questionset[n].checkAnswers(parseInt(answer));
+            questionset[n].checkAnswers(parseInt(answer), trackScore);
             nextQuestion();
         }
     }
