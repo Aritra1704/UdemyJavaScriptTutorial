@@ -144,11 +144,236 @@ function Person(name) {
 // new Person('Aritra').myfriends5(friends);
 
 //ES6
-Person.prototype.myfriends6 = function(friends) {
-    var arr = friends.map((el) =>  `${this.name} +  is friends with  + ${el}`);
+// Person.prototype.myfriends6 = function(friends) {
+//     var arr = friends.map((el) =>  `${this.name} +  is friends with  + ${el}`);
 
-    console.log(arr);
+//     console.log(arr);
+// }
+
+// var friends = ['Bob', 'Jane', 'John'];
+// new Person('Aritra').myfriends6(friends);
+
+
+
+//LECTURE DESTRUCTURING
+
+//ES5
+// var nameArr = ['Aritra', 28];
+// var name = nameArr[0];
+// var age = nameArr[1];
+
+
+// //ES6
+// const [nameconst, ageconst] = ['Aritra', 28];
+// console.log(`name ${nameconst} , Age ${ageconst}`);
+
+// const obj = {
+//     firstName: 'Aritra', 
+//     lastName: 'Pal'
+// };
+
+// const {firstName, lastName} = obj;
+// console.log(`name: ${firstName} ${lastName}`);
+
+// const {firstName: a, lastName: b} = obj;
+// console.log(`name: ${a} ${b}`);
+
+
+
+// function calcAgeRetirement(year) {
+//     const age = new
+//     Date().getFullYear() - year;
+//     return [age, 65 - age];
+// }
+
+// const [age2, retirement] = calcAgeRetirement(1989);
+// console.log(`Age: ${age2}, ${retirement})`);
+
+
+//LECTURE ARRAYS
+
+// const boxes = document.querySelectorAll('.box');
+
+//ES5
+// var boxesArr5 = Array.prototype.slice.call(boxes);
+// boxesArr5.forEach(function(element) {
+//     element.style.backgroundColor = 'dodgerBlue';
+// }, this);
+    
+// for(var i = 0; i < boxesArr5.length; i++) {
+//     if(boxesArr5[i].className === 'box blue')
+//         continue;
+//     // else
+//         boxesArr5[i].textContent = 'I changed to blue.';
+// }
+
+
+//ES6
+// const boxArr6 = Array.from(boxes);
+// boxArr6.forEach(cur => cur.style.backgroundColor = 'dodgerBlue'); 
+// for(const cur of boxArr6) {
+//     // if(cur.className === 'box blue')
+//     if(cur.className.includes('blue'))
+//         continue;
+//     cur.textContent = 'I changed to blue.';
+// }
+
+
+//ES5
+// var ages = [12, 13, 14, 15, 16, 17];
+// var full = ages.map(function(cur) {
+//     return cur >= 14;
+// });
+// console.log(full);
+// console.log(full.indexOf(true));
+// console.log(ages[full.indexOf(true)]);
+
+
+
+//ES6
+// console.log(ages.findIndex(cur => cur >= 14));
+// console.log(ages.find(cur => cur >= 14));
+
+
+
+//LECTURE SPREAD OPERATOR
+// function addforages(a, b, c, d) {
+//     return a + b + c + d;
+// }
+
+// var sum = addforages(18, 38, 12, 21);
+// console.log(sum);
+
+// //ES5
+// var ages = [18, 38, 12, 21];
+// var sum2 = addforages.apply(null, ages);
+// console.log(sum2);
+
+
+// //ES6
+// const max3 = addforages(...ages);
+// console.log(max3);
+
+// const family1 = ['guy1', 'guy2', 'guy3'];
+// const family2 = ['lady1', 'lady2', 'lady3'];
+// const bigfamily = [...family1, 'Lily', ...family2];
+// console.log(bigfamily);
+
+// const h = document.querySelector('h1');
+// const boxes = document.querySelectorAll('.box');
+// const all = [h, ...boxes];
+// Array.from(all).forEach(cur => cur.style.color = 'purple');
+
+
+
+//LECTURE REST PARAMETERS
+/*
+//ES5
+function isfullage5() {
+    // console.log(arguments);
+    var argsStr = Array.prototype.slice.call(arguments);
+    argsStr.forEach(function(cur){
+       console.log((2017 - cur) >= 18); 
+    });
 }
 
-var friends = ['Bob', 'Jane', 'John'];
-new Person('Aritra').myfriends6(friends);
+isfullage5(1989, 2007, 1990, 2013, 1991, 2002);
+
+//ES6
+function isFullAge6(...years) {
+    // console.log(years);
+
+    years.forEach(cur => console.log((2016 - cur) >= 18));
+}
+isFullAge6(1989, 2007, 1990, 2013, 1991, 2002);
+*/
+
+
+//ES5
+// function isfullage5(limit) {
+//     console.log(arguments);
+//     var argsStr = Array.prototype.slice.call(arguments, 1);
+//     argsStr.forEach(function(cur){
+//        console.log((2017 - cur) >= limit); 
+//     });
+// }
+
+// isfullage5(21, 1989, 2007, 1990, 2013, 1991, 2002);
+
+//ES6
+// function isFullAge6(limit, ...years) {
+//     // console.log(years);
+
+//     years.forEach(cur => console.log((2016 - cur) >= limit));
+// }
+// isFullAge6(14, 1989, 2007, 1990, 2013, 1991, 2002);
+
+
+//LECTURE DEFAULT PARAMETERS
+
+/*
+//ES5
+function PalPerson(firstName, yearofBirth, lastname, nationality) {
+
+    lastname === undefined ? lastname = 'Pal' : lastname;
+    nationality === undefined ? nationality = 'India' : nationality;
+
+    this.firstName = firstName;
+    this.lastname = lastname;
+    this.yearofBirth = yearofBirth;
+    this.nationality = nationality;
+}
+*/
+
+//ES6
+// function PalPerson(firstName, yearofBirth, lastname = 'Pal', nationality = 'India') {
+    
+//         this.firstName = firstName;
+//         this.lastname = lastname;
+//         this.yearofBirth = yearofBirth;
+//         this.nationality = nationality;
+// }
+
+// var aritra = new PalPerson('Aritra', 1989);
+// console.log(aritra);
+// var randomguy = new PalPerson('Guy', 1980, 'Rand', 'anywhere');
+// console.log(randomguy);
+
+
+
+//LECTURE MAPS
+
+const question = new Map();
+question.set('Question', 'What is the latest JS version?');
+question.set(1, 'ES5');
+question.set(2, 'ES6');
+question.set(3, 'ES2015');
+question.set(4, 'ES7');
+question.set('answer', 3);
+question.set('true', 'Correct answer');
+question.set('false', 'Wrong answer');
+
+console.log(question.get('Question'));
+// console.log(question.size);
+
+// if(question.has(4)) {
+//     // question.delete(4);
+//     console.log('Answer 4');
+// }
+
+// question.clear();
+
+// question.forEach((value, key) => console.log(`This is key: ${key} and this is value ${value}.`));
+
+for(let [key, value] of question.entries()) {
+    // console.log(`This is key: ${key} and this is value ${value}.`);
+    if(typeof(key) === 'number') {
+        console.log(`Answer key ${key} value is ${value}`);
+    }
+}
+
+const ans = parseInt(prompt(`Write correct ans`));
+const isCorrect = ans === question.get('answer');
+console.log(isCorrect);
+// console.log(question.get(ans === question.get('answer')));
+console.log(question.get(isCorrect.toString()));
