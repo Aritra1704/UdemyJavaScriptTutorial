@@ -343,17 +343,17 @@ function PalPerson(firstName, yearofBirth, lastname, nationality) {
 
 //LECTURE MAPS
 
-const question = new Map();
-question.set('Question', 'What is the latest JS version?');
-question.set(1, 'ES5');
-question.set(2, 'ES6');
-question.set(3, 'ES2015');
-question.set(4, 'ES7');
-question.set('answer', 3);
-question.set('true', 'Correct answer');
-question.set('false', 'Wrong answer');
+// const question = new Map();
+// question.set('Question', 'What is the latest JS version?');
+// question.set(1, 'ES5');
+// question.set(2, 'ES6');
+// question.set(3, 'ES2015');
+// question.set(4, 'ES7');
+// question.set('answer', 3);
+// question.set('true', 'Correct answer');
+// question.set('false', 'Wrong answer');
 
-console.log(question.get('Question'));
+// console.log(question.get('Question'));
 // console.log(question.size);
 
 // if(question.has(4)) {
@@ -365,15 +365,121 @@ console.log(question.get('Question'));
 
 // question.forEach((value, key) => console.log(`This is key: ${key} and this is value ${value}.`));
 
-for(let [key, value] of question.entries()) {
-    // console.log(`This is key: ${key} and this is value ${value}.`);
-    if(typeof(key) === 'number') {
-        console.log(`Answer key ${key} value is ${value}`);
+// for(let [key, value] of question.entries()) {
+//     // console.log(`This is key: ${key} and this is value ${value}.`);
+//     if(typeof(key) === 'number') {
+//         console.log(`Answer key ${key} value is ${value}`);
+//     }
+// }
+
+// const ans = parseInt(prompt(`Write correct ans`));
+// const isCorrect = ans === question.get('answer');
+// console.log(isCorrect);
+// console.log(question.get(ans === question.get('answer')));
+// console.log(question.get(isCorrect.toString()));
+
+
+
+// //LECTURE CLASSES
+
+// //ES5
+// var Person5 = function(name, yearofbirth, job) {
+//     this.name = name;
+//     this.yearofBirth = yearofbirth;
+//     this.job = job;
+// }
+
+// Person5.prototype.calculateAge = function() {
+//     var age = new Date().getFullYear() - this.yearofBirth;
+//     console.log(age);
+// }
+
+// var aritra5 = new Person5('aritra', 1989, 'developer');
+
+
+// //ES6
+// class Person6 {
+//     constructor (name, yearofBirth, job) {
+//         this.name = name;
+//         this.yearofBirth = yearofBirth;
+//         this.job = job;
+//     }
+
+//     calculateAge () {
+//         var age = new Date().getFullYear() - this.yearofBirth;
+//         console.log(age);
+//     }
+
+//     static greeting() {
+//         console.log('Hey there');
+//     }
+// }
+
+// const aritra6 = new Person6('Aritra', 1989, 'developer');
+// Person6.greeting();
+
+
+
+//LECTURE CLASSES and SUBCLASSES
+
+//ES5
+var Person5 = function(name, yearofbirth, job) {
+    this.name = name;
+    this.yearofBirth = yearofbirth;
+    this.job = job;
+}
+
+Person5.prototype.calculateAge = function() {
+    var age = new Date().getFullYear() - this.yearofBirth;
+    console.log(age);
+}
+
+var Athelete5 = function(name, yearOfBirth, job, olympicGames, medals) {
+    Person5.call(this, name, yearOfBirth, job);
+    this.olympicGames = olympicGames;
+    this.medals = medals;
+}
+
+Athelete5.prototype = Object.create(Person5.prototype);
+
+Athelete5.prototype.wonMedal = function() {
+    this.medals++;
+    console.log(this.medals);
+}
+
+var aritra5 = new Athelete5('aritra', 1989, 'developer', 3, 10);
+aritra5.calculateAge();
+aritra5.wonMedal();
+
+
+//ES6
+class Person6 {
+    constructor (name, yearofBirth, job) {
+        this.name = name;
+        this.yearofBirth = yearofBirth;
+        this.job = job;
+    }
+
+    calculateAge () {
+        var age = new Date().getFullYear() - this.yearofBirth;
+        console.log(age);
     }
 }
 
-const ans = parseInt(prompt(`Write correct ans`));
-const isCorrect = ans === question.get('answer');
-console.log(isCorrect);
-// console.log(question.get(ans === question.get('answer')));
-console.log(question.get(isCorrect.toString()));
+class Athelete6 extends Person6 {
+    constructor(name, yearofBirth, job, olympicGames, medals) {
+        super(name, yearofBirth, job);
+        this.olympicGames = olympicGames;
+        this.medals = medals;
+    }
+
+    wonmedals() {
+        this.medals++;
+        console.log(this.medals);
+    }
+}
+
+const athelete6 = new Athelete6('Aritra', 1989, 'developer', 3, 10);
+athelete6.calculateAge();
+athelete6.wonmedals();
+
